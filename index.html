@@ -38,21 +38,30 @@
     </script>
     <style>
       :root{
-        --teal:#0E7490;--teal-dark:#0A5F75;--teal-mid:#1592B0;--teal-light:#67CEEB;
-        --teal-pale:#E0F5FB;--teal-pale2:#F0FAFD;--slate:#1E3A4C;--slate-mid:#2E5469;
-        --slate-light:#4A7A96;--accent:#D4605A;--accent-pale:#FBF0EF;--gold:#B88A3A;
-        --bg:#F7FAFB;--bg-white:#FFFFFF;--bg-section:#F2F8FA;
-        --text-h:#0D2535;--text-body:#1E3A4C;--text-muted:#4A7A96;--text-subtle:#6B99B0;
-        --border:rgba(14,116,144,0.14);--border-mid:rgba(14,116,144,0.25);
-        --shadow-xs:0 1px 4px rgba(14,116,144,0.07);--shadow-sm:0 3px 12px rgba(14,116,144,0.10);
-        --shadow-md:0 6px 24px rgba(14,116,144,0.13);--shadow-lg:0 12px 40px rgba(14,116,144,0.17);
-        --shadow-xl:0 20px 60px rgba(14,116,144,0.22);
+        /* Brand palette – from logo: purple, teal, pink */
+        --teal:#8B6DB5;--teal-dark:#6B4D95;--teal-mid:#A080CC;--teal-light:#C8A8E8;
+        --teal-pale:#F0E8F8;--teal-pale2:#F8F4FC;--slate:#3D2A5C;--slate-mid:#5A3D80;
+        --slate-light:#8070A0;--accent:#C06090;--accent-pale:#FBF0F5;--gold:#B88A3A;
+        --brand-teal:#5ABCBE;--brand-teal-dark:#3D9CA0;--brand-pink:#E0A0C0;
+        --bg:#FDF8FC;--bg-white:#FFFFFF;--bg-section:#F8F2FC;
+        --text-h:#3D2A5C;--text-body:#4A3565;--text-muted:#8070A0;--text-subtle:#A090C0;
+        --border:rgba(139,109,181,0.14);--border-mid:rgba(139,109,181,0.25);
+        --shadow-xs:0 1px 4px rgba(139,109,181,0.07);--shadow-sm:0 3px 12px rgba(139,109,181,0.10);
+        --shadow-md:0 6px 24px rgba(139,109,181,0.13);--shadow-lg:0 12px 40px rgba(139,109,181,0.17);
+        --shadow-xl:0 20px 60px rgba(139,109,181,0.22);
         --radius-xs:6px;--radius-sm:10px;--radius:16px;--radius-lg:24px;--radius-xl:32px;
         --transition:all 0.25s cubic-bezier(0.4,0,0.2,1)
       }
       *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
       html{scroll-behavior:smooth;font-size:16px}
-      body{font-family:'Heebo',Arial,sans-serif;color:var(--text-body);background:var(--bg);direction:rtl;line-height:1.6;-webkit-font-smoothing:antialiased}
+      body{font-family:'Heebo',Arial,sans-serif;color:var(--text-body);background:var(--bg) url('images/bg.jpg') center/cover fixed;direction:rtl;line-height:1.6;-webkit-font-smoothing:antialiased}
+      /* Ensure sections have semi-opaque backgrounds so bg texture shows subtly */
+      section:nth-child(odd){background:rgba(248,242,252,0.88) !important}
+      section:nth-child(even){background:rgba(255,255,255,0.92) !important}
+      section#skills{background:rgba(255,255,255,0.92) !important}
+      section#exp{background:rgba(248,242,252,0.88) !important}
+      section#edu{background:rgba(255,255,255,0.92) !important}
+      section#contact{background:rgba(248,242,252,0.88) !important}
 
       /* Skip link */
       .skip-link{position:absolute;top:-100%;right:0;background:var(--teal-dark);color:#fff;padding:12px 24px;border-radius:0 0 var(--radius-sm) var(--radius-sm);font-weight:700;z-index:9999;text-decoration:none}
@@ -60,22 +69,43 @@
       :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
 
       /* ─── Hero ─── */
-      .hero{background:linear-gradient(155deg,#0A5F75 0%,#0E7490 35%,#1592B0 65%,#67CEEB 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 72px;position:relative;overflow:hidden}
-      .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 80%,rgba(255,255,255,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 20%,rgba(255,255,255,0.06) 0%,transparent 55%)}
+      .hero{background:linear-gradient(155deg,#6B4D95 0%,#8B6DB5 30%,#A080CC 55%,#C8A8E8 78%,#E8D0F0 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 32px 80px;position:relative;overflow:hidden}
+      .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 15% 85%,rgba(255,255,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 85% 15%,rgba(255,255,255,0.07) 0%,transparent 55%)}
       .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom right,transparent 49%,var(--bg) 50%)}
-      .hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.08) 1px,transparent 0);background-size:32px 32px;pointer-events:none}
+      .hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.07) 1px,transparent 0);background-size:36px 36px;pointer-events:none}
 
-      .avatar-wrap{width:172px;height:172px;border-radius:50%;overflow:hidden;margin-bottom:32px;position:relative;z-index:2;box-shadow:0 0 0 5px rgba(255,255,255,0.25),0 0 0 10px rgba(255,255,255,0.12),0 16px 48px rgba(0,0,0,0.28);animation:float 6s ease-in-out infinite}
+      /* Logo decorations */
+      .hero-logo-deco{position:absolute;top:28px;width:155px;height:auto;opacity:0.60;pointer-events:none;filter:drop-shadow(0 6px 16px rgba(80,40,120,0.30));z-index:1;transition:opacity .3s}
+      .hero-logo-deco.right{right:clamp(40px,7vw,120px);transform:rotate(10deg)}
+      .hero-logo-deco.left{left:clamp(40px,7vw,120px);transform:rotate(-10deg) scaleX(-1)}
+      @media(max-width:900px){.hero-logo-deco{width:110px;top:18px;opacity:.45}}
+      @media(max-width:600px){.hero-logo-deco{width:72px;top:14px;right:12px !important;left:12px !important;opacity:.35}}
+
+      /* Two-column inner layout */
+      .hero-inner{display:flex;align-items:center;gap:52px;max-width:880px;width:100%;position:relative;z-index:2}
+      .hero-photo{flex-shrink:0}
+      .hero-text{flex:1;text-align:right;display:flex;flex-direction:column;align-items:flex-start}
+
+      /* Rectangular profile photo */
+      .avatar-wrap{width:230px;height:305px;border-radius:20px;overflow:hidden;position:relative;border:5px solid rgba(255,255,255,0.88);box-shadow:0 0 0 1px rgba(255,255,255,0.25),0 20px 55px rgba(60,20,80,0.35);animation:float 6s ease-in-out infinite;flex-shrink:0}
       @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-      .avatar-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top}
+      .avatar-wrap img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
 
-      .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.15;margin-bottom:14px;position:relative;z-index:2;text-shadow:0 3px 16px rgba(0,0,0,0.22)}
-      .hero-subtitle{font-size:clamp(1rem,2.2vw,1.2rem);font-weight:500;color:rgba(255,255,255,0.92);margin-bottom:8px;position:relative;z-index:2;letter-spacing:.01em}
-      .hero-subtitle-en{font-size:.95rem;color:rgba(255,255,255,.68);margin-bottom:28px;position:relative;z-index:2;font-weight:400;letter-spacing:.02em}
-      .hero-location{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.95);padding:9px 20px;border-radius:40px;font-size:.9rem;font-weight:600;margin-bottom:32px;position:relative;z-index:2;letter-spacing:.01em}
-      .hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;position:relative;z-index:2;max-width:680px;margin-top:4px}
-      .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);color:rgba(255,255,255,.95);border:1.5px solid rgba(255,255,255,.22);padding:8px 18px;border-radius:40px;font-size:.84rem;font-weight:700;letter-spacing:.01em;transition:var(--transition);min-height:44px}
-      .badge:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+      .hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.15;margin-bottom:12px;text-shadow:0 3px 16px rgba(0,0,0,0.20)}
+      .hero-subtitle{font-size:clamp(.95rem,2vw,1.15rem);font-weight:600;color:rgba(255,255,255,0.93);margin-bottom:6px;letter-spacing:.01em}
+      .hero-subtitle-en{font-size:.88rem;color:rgba(255,255,255,.65);margin-bottom:24px;font-weight:400;letter-spacing:.02em}
+      .hero-location{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.28);color:rgba(255,255,255,.95);padding:8px 18px;border-radius:40px;font-size:.86rem;font-weight:600;margin-bottom:24px;letter-spacing:.01em}
+      .hero-badges{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px;max-width:420px}
+      .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);color:rgba(255,255,255,.95);border:1.5px solid rgba(255,255,255,.22);padding:7px 15px;border-radius:40px;font-size:.80rem;font-weight:700;letter-spacing:.01em;transition:var(--transition);min-height:40px}
+      .badge:hover{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.42);transform:translateY(-2px)}
+
+      /* Mobile: stack vertically */
+      @media(max-width:700px){
+        .hero-inner{flex-direction:column;gap:28px;text-align:center}
+        .hero-text{align-items:center;text-align:center}
+        .avatar-wrap{width:180px;height:240px}
+        .hero-badges{justify-content:center}
+      }
 
       /* Floating WhatsApp button */
       #whatsapp-fab{position:fixed;bottom:28px;right:28px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:var(--transition);z-index:400;text-decoration:none}
@@ -115,9 +145,9 @@
       .about-body{background:var(--bg-white);border-radius:var(--radius-lg);padding:44px 48px;box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:32px}
       .about-body p{font-size:1.05rem;line-height:1.85;color:var(--text-body);margin-bottom:20px}
       .about-body p:last-child{margin-bottom:0}
-      .about-body strong{color:var(--teal-dark);font-weight:700;background:rgba(14,116,144,.07);padding:1px 5px;border-radius:4px}
-      .about-pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;justify-content:flex-end}
-      .about-pill{display:inline-flex;align-items:center;gap:8px;background:var(--teal-pale);color:var(--teal-dark);border:1.5px solid rgba(14,116,144,.18);padding:10px 20px;border-radius:40px;font-size:.875rem;font-weight:700;letter-spacing:.01em;transition:var(--transition);min-height:44px}
+      .about-body strong{color:var(--teal-dark);font-weight:700;background:rgba(139,109,181,.07);padding:1px 5px;border-radius:4px}
+      .about-pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;justify-content:flex-start}
+      .about-pill{display:inline-flex;align-items:center;gap:8px;background:var(--teal-pale);color:var(--teal-dark);border:1.5px solid rgba(139,109,181,.18);padding:10px 20px;border-radius:40px;font-size:.875rem;font-weight:700;letter-spacing:.01em;transition:var(--transition);min-height:44px}
       .about-pill:hover{background:var(--teal);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-sm)}
       .about-pill:first-child{background:linear-gradient(135deg,var(--teal-pale),#DAEEF5);border-color:var(--teal);font-weight:800}
 
@@ -126,7 +156,7 @@
       .spec-card{background:var(--bg-white);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:var(--transition);position:relative;overflow:hidden;text-align:right}
       .spec-card::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--teal),var(--teal-light));border-radius:0 var(--radius) var(--radius) 0}
       .spec-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--teal-light)}
-      .spec-icon{width:54px;height:54px;background:var(--teal-pale);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:20px;border:1px solid rgba(14,116,144,.12);margin-right:0;margin-left:auto}
+      .spec-icon{width:54px;height:54px;background:var(--teal-pale);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:20px;border:1px solid rgba(139,109,181,.12);margin-right:0;margin-left:auto}
       .spec-card h3{font-size:1rem;font-weight:800;color:var(--text-h);line-height:1.4;margin-bottom:10px}
       .spec-card p{font-size:.875rem;color:var(--text-muted);line-height:1.65}
 
@@ -138,19 +168,19 @@
       .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px}
       .exp-title{font-size:1.15rem;font-weight:800;color:var(--text-h);line-height:1.3}
       .exp-sub{font-size:.875rem;color:var(--text-muted);margin-top:5px;font-weight:500}
-      .exp-pill{background:var(--teal-pale);color:var(--teal-dark);border:1.5px solid rgba(14,116,144,.2);padding:6px 16px;border-radius:30px;font-size:.82rem;font-weight:700;white-space:nowrap;flex-shrink:0}
+      .exp-pill{background:var(--teal-pale);color:var(--teal-dark);border:1.5px solid rgba(139,109,181,.2);padding:6px 16px;border-radius:30px;font-size:.82rem;font-weight:700;white-space:nowrap;flex-shrink:0}
       .exp-pill.blue{background:#EEF3F7;color:var(--slate-mid);border-color:rgba(46,84,105,.2)}
       .exp-list{list-style:none;display:grid;gap:10px;margin-top:8px}
       .exp-list li{font-size:.9rem;color:var(--text-body);padding-right:18px;position:relative;line-height:1.6}
-      .exp-list li::before{content:'';position:absolute;right:0;top:9px;width:7px;height:7px;background:var(--teal);border-radius:50%;box-shadow:0 0 0 3px rgba(14,116,144,.12)}
+      .exp-list li::before{content:'';position:absolute;right:0;top:9px;width:7px;height:7px;background:var(--teal);border-radius:50%;box-shadow:0 0 0 3px rgba(139,109,181,.12)}
 
       /* ─── Skills ─── */
-      .skills-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+      .skills-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start}
       .skill-tag{background:var(--bg-white);color:var(--teal-dark);border:1.5px solid var(--border-mid);padding:10px 20px;border-radius:40px;font-size:.875rem;font-weight:700;transition:var(--transition);letter-spacing:.01em;box-shadow:var(--shadow-xs);min-height:44px;display:inline-flex;align-items:center}
       .skill-tag:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:translateY(-3px);box-shadow:var(--shadow-sm)}
 
       /* ─── Education ─── */
-      .edu-degree{background:linear-gradient(135deg,var(--teal-pale) 0%,#E8F6FA 100%);border-radius:var(--radius-lg);padding:40px 44px;margin-bottom:36px;border:1px solid rgba(14,116,144,.15);display:flex;align-items:flex-start;gap:24px;box-shadow:var(--shadow-sm)}
+      .edu-degree{background:linear-gradient(135deg,var(--teal-pale) 0%,#F0E8F8 100%);border-radius:var(--radius-lg);padding:40px 44px;margin-bottom:36px;border:1px solid rgba(139,109,181,.15);display:flex;align-items:flex-start;gap:24px;box-shadow:var(--shadow-sm)}
       .edu-degree-icon{font-size:2.8rem;flex-shrink:0;margin-top:4px}
       .edu-degree-body h3{font-size:1.3rem;font-weight:800;color:var(--teal-dark);margin-bottom:6px}
       .edu-degree-body p{font-size:.95rem;color:var(--text-body);line-height:1.6}
@@ -160,7 +190,7 @@
       .cert-card{background:var(--bg-white);border-radius:var(--radius-sm);padding:22px;box-shadow:var(--shadow-xs);border:1px solid var(--border);transition:var(--transition);display:flex;gap:14px;align-items:flex-start}
       .cert-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--teal-light)}
       .cert-card:hover .cert-title{color:var(--teal-dark)}
-      .cert-icon{font-size:1.6rem;flex-shrink:0;width:40px;height:40px;background:var(--teal-pale);border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center}
+      .cert-icon{font-size:.72rem;font-weight:900;letter-spacing:.02em;flex-shrink:0;width:38px;height:38px;background:var(--teal);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Heebo',Arial,sans-serif}
       .cert-title{font-size:.9rem;font-weight:700;color:var(--text-h);line-height:1.45}
 
       /* ─── Contact ─── */
@@ -190,12 +220,12 @@
       .modal-inner{background:#fff;border-radius:20px;padding:40px 36px;max-width:480px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3);direction:rtl}
       .modal-close{position:absolute;top:16px;left:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#666;line-height:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition)}
       .modal-close:hover{background:#f0f0f0;color:#333}
-      .modal-title{font-size:1.4rem;font-weight:800;color:#0A5F75;margin-bottom:6px;text-align:right}
-      .modal-sub{font-size:.9rem;color:#4A7A96;margin-bottom:24px;text-align:right}
+      .modal-title{font-size:1.4rem;font-weight:800;color:#6B4D95;margin-bottom:6px;text-align:right}
+      .modal-sub{font-size:.9rem;color:#8070A0;margin-bottom:24px;text-align:right}
       .modal-form{display:flex;flex-direction:column;gap:14px}
-      .modal-input{padding:12px 16px;border:1.5px solid #d0e8ef;border-radius:10px;font-size:.95rem;font-family:inherit;direction:rtl;outline:none;transition:border 0.2s;width:100%}
-      .modal-input:focus{border-color:#0E7490}
-      .modal-submit{background:linear-gradient(135deg,#0E7490,#0A5F75);color:#fff;border:none;padding:14px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:var(--transition)}
+      .modal-input{padding:12px 16px;border:1.5px solid #e0d0f0;border-radius:10px;font-size:.95rem;font-family:inherit;direction:rtl;outline:none;transition:border 0.2s;width:100%}
+      .modal-input:focus{border-color:#8B6DB5}
+      .modal-submit{background:linear-gradient(135deg,#8B6DB5,#6B4D95);color:#fff;border:none;padding:14px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:var(--transition)}
       .modal-submit:hover{opacity:.88;transform:translateY(-1px)}
 
       /* ─── Responsive ─── */
@@ -284,18 +314,29 @@
 
     <header class="hero">
       <div class="hero-pattern" aria-hidden="true"></div>
-      <div class="avatar-wrap">
-        <img src="https://media.licdn.com/dms/image/v2/D4D03AQE7p2bOrqOLGg/profile-displayphoto-scale_200_200/B4DZ01PDdVHMAY-/0/1774714632526" alt="אילנה אורונוב גרבוז – פיזיותרפיסטית רצפת האגן" width="172" height="172"/>
-      </div>
-      <h1>אילנה אורונוב גרבוז</h1>
-      <p class="hero-subtitle">פיזיותרפיסטית | מומחית לשיקום רצפת האגן לנשים וילדים</p>
-      <p class="hero-subtitle-en">Pelvic Floor Physiotherapist &ndash; Women &amp; Pediatrics</p>
-      <span class="hero-location">&#x1F4CD; קריית ביאליק, מחוז חיפה, ישראל</span>
-      <div class="hero-badges">
-        <span class="badge">&#x2713; רישיון ממשרד הבריאות</span>
-        <span class="badge">&#x2764; נשים וילדים</span>
-        <span class="badge">&#x1F3E5; מכבי שירותי בריאות</span>
-        <span class="badge">&#x1F4AA; 12+ שנות ניסיון</span>
+      <img src="images/logo.jpg" class="hero-logo-deco right" alt="" aria-hidden="true"/>
+      <img src="images/logo.jpg" class="hero-logo-deco left"  alt="" aria-hidden="true"/>
+
+      <div class="hero-inner">
+        <!-- Photo -->
+        <div class="hero-photo">
+          <div class="avatar-wrap">
+            <img src="images/profile.jpg" alt="אילנה אורונוב גרבוז – פיזיותרפיסטית רצפת האגן בקליניקה"/>
+          </div>
+        </div>
+        <!-- Text -->
+        <div class="hero-text">
+          <h1>אילנה אורונוב גרבוז</h1>
+          <p class="hero-subtitle">פיזיותרפיסטית | מומחית לשיקום רצפת האגן לנשים וילדים</p>
+          <p class="hero-subtitle-en">Pelvic Floor Physiotherapist &ndash; Women &amp; Pediatrics</p>
+          <span class="hero-location">&#x1F4CD; קריית ביאליק, מחוז חיפה, ישראל</span>
+          <div class="hero-badges">
+            <span class="badge">&#x2713; רישיון ממשרד הבריאות</span>
+            <span class="badge">&#x2764; נשים וילדים</span>
+            <span class="badge">&#x1F3E5; מכבי שירותי בריאות</span>
+            <span class="badge">&#x1F4AA; 12+ שנות ניסיון</span>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -310,7 +351,7 @@
 
     <section id="about" role="region" aria-labelledby="about-title">
       <div class="con">
-        <h2 class="sec-title reveal" id="about-title">אודות <span>אילנה</span></h2>
+        <h2 class="sec-title reveal" id="about-title">נעים <span>להכיר</span></h2>
         <div class="sec-divider reveal reveal-delay-1"></div>
         <div class="about-body reveal reveal-delay-2">
           <p>פיזיותרפיסטית מוסמכת מטעם <strong>משרד הבריאות</strong> עם <strong>12+ שנות ניסיון</strong> בפיזיותרפיה, מתוכן שנים רבות ב<strong>מכבי שירותי בריאות</strong> בתחום האורתופדיה ורצפת האגן. מתמחה בשיקום רצפת האגן לנשים וילדים, ומעניקה טיפול מקצועי, אישי ומכבד לנשים בכל שלבי החיים &ndash; לאחר לידה, גיל המעבר, וכל מצב הקשור לרצפת האגן &ndash; כמו גם לילדים עם בעיות שליטה בשלפוחית ובמעי.</p>
@@ -407,12 +448,10 @@
         <div class="sec-divider reveal reveal-delay-1"></div>
         <div class="skills-grid reveal reveal-delay-2">
           <span class="skill-tag">שיקום רצפת האגן</span>
-          <span class="skill-tag">טיפול ידני</span>
           <span class="skill-tag">שיקום אנורקטאלי</span>
           <span class="skill-tag">שיטת גיארם</span>
           <span class="skill-tag">התקן פסרי</span>
           <span class="skill-tag">ביופידבק</span>
-          <span class="skill-tag">אלקטרוסטימולציה</span>
           <span class="skill-tag">פיזיותרפיה אורתופדית</span>
           <span class="skill-tag">פיזיותרפיה ילדים</span>
           <span class="skill-tag">שיקום סביב לידה</span>
@@ -434,30 +473,30 @@
             <span class="edu-year">2009 &ndash; 2013</span>
           </div>
         </div>
-        <h3 class="certs-section-title reveal reveal-delay-3">&#x1F3C5; הכשרות והסמכות מקצועיות</h3>
+        <h3 class="certs-section-title reveal reveal-delay-3">הכשרות והסמכות המקצועיות</h3>
         <div class="certs-grid">
           <div class="cert-card reveal reveal-delay-1">
-            <div class="cert-icon" aria-hidden="true">&#x1F91C;</div>
+            <div class="cert-icon" aria-hidden="true">01</div>
             <div class="cert-title">שיקום רצפת האגן &#8211; העמותה הישראלית לפיזיותרפיה (IPS)</div>
           </div>
           <div class="cert-card reveal reveal-delay-2">
-            <div class="cert-icon" aria-hidden="true">&#x1F476;</div>
+            <div class="cert-icon" aria-hidden="true">02</div>
             <div class="cert-title">Pediatric Bowel &amp; Bladder Evaluation &amp; Treatment &#8211; Shamir Medical Center</div>
           </div>
           <div class="cert-card reveal reveal-delay-3">
-            <div class="cert-icon" aria-hidden="true">&#x1F6BD;</div>
+            <div class="cert-icon" aria-hidden="true">03</div>
             <div class="cert-title">שיקום אנורקטאלי &#8211; מכבי שירותי בריאות</div>
           </div>
           <div class="cert-card reveal reveal-delay-4">
-            <div class="cert-icon" aria-hidden="true">&#x1FAF9;</div>
+            <div class="cert-icon" aria-hidden="true">04</div>
             <div class="cert-title">שיקום בטני ושימוש סב-לידתי &#8211; שיטת גיארם (STIMED)</div>
           </div>
           <div class="cert-card reveal reveal-delay-5">
-            <div class="cert-icon" aria-hidden="true">&#x1FAC0;</div>
+            <div class="cert-icon" aria-hidden="true">05</div>
             <div class="cert-title">שיקום אורטופדי סביב ההריון והלידה &#8211; Sport &amp; Spine Physiotherapy</div>
           </div>
           <div class="cert-card reveal reveal-delay-6">
-            <div class="cert-icon" aria-hidden="true">&#x1F489;</div>
+            <div class="cert-icon" aria-hidden="true">06</div>
             <div class="cert-title">התאמת התקן פסרי &#8211; בית חולים בלינסון</div>
           </div>
         </div>
@@ -635,7 +674,13 @@
         <button class="modal-close" id="modal-close-btn" aria-label="סגירת חלון">&#x2715;</button>
         <h3 class="modal-title" id="modal-title">&#x2709;&#xFE0F; שלחי לי הודעה</h3>
         <p class="modal-sub" id="modal-desc">אחזור אליך בהקדם</p>
-        <form class="modal-form" action="https://formsubmit.co/ilanapfpt@gmail.com" method="POST" novalidate>
+        <div id="form-success" style="display:none;text-align:center;padding:32px 16px">
+          <div style="font-size:3rem;margin-bottom:16px">✅</div>
+          <h4 style="font-size:1.2rem;font-weight:800;color:#6B4D95;margin-bottom:10px">תודה, נחזור אליך בהקדם האפשרי!</h4>
+          <p style="font-size:.9rem;color:#8070A0;line-height:1.6">הפנייה התקבלה. אילנה תחזור אליך בהקדם.</p>
+          <button type="button" onclick="document.getElementById('form-success').style.display='none';document.getElementById('contact-form').style.display='flex'" style="margin-top:20px;background:var(--teal);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer">שלחי פנייה נוספת</button>
+        </div>
+        <form id="contact-form" class="modal-form" action="https://formsubmit.co/ajax/ilanapfpt@gmail.com" method="POST" novalidate>
           <input type="hidden" name="_captcha" value="false"/>
           <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - אילנה פיזיותרפיה"/>
           <input type="hidden" name="_next" value="https://arikgarbuz.github.io/ilana-pelvic-floor-physio/"/>
@@ -721,6 +766,38 @@
         const first = focusable[0], last = focusable[focusable.length - 1];
         if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
         else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      });
+
+      // ── Contact Form AJAX ──
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+      const submitBtn = contactForm.querySelector('.modal-submit');
+
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'שולח...';
+        try {
+          const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          const data = await res.json();
+          if (data.success === 'true' || data.success === true) {
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+            contactForm.reset();
+          } else {
+            throw new Error('send failed');
+          }
+        } catch {
+          submitBtn.textContent = 'שגיאה – נסי שוב';
+          submitBtn.style.background = '#c0392b';
+        } finally {
+          submitBtn.disabled = false;
+          if (submitBtn.textContent === 'שולח...') submitBtn.textContent = 'שלחי הודעה →';
+        }
       });
 
       // ── Accessibility Statement Modal ──
